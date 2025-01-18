@@ -21,16 +21,18 @@ vacancy.Base.metadata.create_all(bind=engine)
 feedback.Base.metadata.create_all(bind=engine)
 
 origins = [
-    "http://localhost",
-    "http://localhost:3000",
+    "http://localhost",           # Để phát triển trên máy cục bộ (frontend trên localhost)
+    "http://localhost:3000",      # Để phát triển frontend trên port 3000 (nếu sử dụng React, Vue,...)
+    "https://myfrontend.com",     # Thêm domain frontend nếu deploy trên một server khác
+    "https://job-for-deploy.onrender.com",  # Đảm bảo thêm domain backend của bạn (render)
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=origins,         # Cho phép các origins trong danh sách
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"],           # Cho phép tất cả các phương thức HTTP
+    allow_headers=["*"],           # Cho phép tất cả các header
 )
 
 app.include_router(AuthRouter.router, tags=['auth'], prefix='/api')
