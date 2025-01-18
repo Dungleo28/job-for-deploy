@@ -3,7 +3,7 @@ import { access_token } from '../constants/token';
 import { refresh_token } from '../services/auth'; 
 
 export const instance = axios.create({
-  baseURL: 'http://localhost:8000/api/',
+  baseURL: 'https://jobsearchkhtn.onrender.com/api/',
   headers: {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${access_token}`
